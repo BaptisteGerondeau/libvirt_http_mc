@@ -5,11 +5,9 @@ import machine, listmachines
 
 class Machine_Control(object):
 
-    def __init__(self):
-        self.machine_list = listmachines.ListMachines()
-
     def get_machine_byname(self, machine_name):
-        for machine in self.machine_list.get_machine_list():
+        machine_list = listmachines.ListMachines()
+        for machine in machine_list.get_machine_list():
             if machine.name == machine_name:
                 return machine
         raise FileNotFoundError('Machine %s is unknown' % machine_name)

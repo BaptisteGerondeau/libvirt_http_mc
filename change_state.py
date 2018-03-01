@@ -34,11 +34,23 @@ class Change_State(object):
         except CalledProcessError as e:
             print("Failed to reboot machine : %s" % e.output)
 
-    def reset(self, machine):
+    def force_reset(self, machine):
         try:
             virsh_output = check_output(['virsh', 'reset', machine.name])
         except CalledProcessError as e:
             print("Failed to reset machine : %s" % e.output)
+
+    def force_off(self, machine, graceful=True):
+        if graceful:
+            try:
+                virsh_output = check_output(['virsh', 'destroy', '--graceful', machine.name])
+            except CalledProcessError as e:
+                print("Failed to reset machine : %s" % e.output)
+        else:
+            try:
+                virsh_output = check_output(['virsh', 'destroy', machine.name])
+            except CalledProcessError as e:
+                print("Failed to reset machine : %s" % e.output)
 
     def pxeboot(self, machine):
         self.dumpxml(machine, True)
