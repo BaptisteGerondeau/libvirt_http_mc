@@ -17,6 +17,8 @@ import json
 
 class Root(object):
     def __init__(self):
+        """The name of the attribute here determines the url path.
+        """
         self.service = MCGeneratorWebService()
 
     @cherrypy.expose
@@ -28,6 +30,8 @@ class Root(object):
 class MCGeneratorWebService(object):
 
     def __init__(self):
+        """The name of the attributes here determine the url path.
+        """
         self.controller = machine_control.Machine_Control()
         self.state_controller = machine_state_control.Machine_State_Control()
 

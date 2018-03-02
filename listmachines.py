@@ -6,8 +6,9 @@ import machine
 from subprocess import check_output
 
 class ListMachines:
-
-    """ Sample request handler class. """
+""" Class handling the machines' list by calling virsh.
+TODO : Parsing logic could be grouped up in less functions.
+"""
 
     def __init__(self):
         self.machine_list = self.build_machine_list()

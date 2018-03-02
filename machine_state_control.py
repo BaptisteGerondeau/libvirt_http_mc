@@ -7,7 +7,11 @@ import time
 
 @cherrypy.expose
 class Machine_State_Control(object):
-
+"""This class is the state controller of a machine.
+As we are using a RESTlike API, and due to constraints on CherryPy's side
+it is stateless : i.e. machine cannot be an attribute.
+The virsh calling logic is handled by the ChangeState class
+"""
     def __init__(self):
         self.state_changer = change_state.Change_State()
         self.helper = machine_control.Machine_Control()
@@ -48,11 +52,10 @@ class Machine_State_Control(object):
 
     @cherrypy.expose
     def pxeboot(self, machine_name):
-        while self.helper.get_machine_byname(machine_name).state != 'shut off':
-            self.cyclepower(machine)
-            time.sleep(5)
+#        while self.helper.get_machine_byname(machine_name).state != 'shut off':
+#            self.cyclepower(machine)
+#            time.sleep(5)
         self.state_changer.pxeboot(self.helper.get_machine_byname(machine_name))
-#        self.state_changer.power_on(machine)
 
     @cherrypy.expose
     def diskboot(self, machine_name):
@@ -64,7 +67,6 @@ class Machine_State_Control(object):
 #            self.state_changer.reset(machine)
 #            time.sleep(5)
         self.state_changer.diskboot(machine)
-#        self.state_changer.power_on(machine)
 
     @cherrypy.expose
     def defaultboot(self, machine_name):
@@ -76,4 +78,3 @@ class Machine_State_Control(object):
 #            self.state_changer.reset(machine)
 #            time.sleep(5)
         self.state_changer.defaultboot(machine)
-#        self.state_changer.power_on(machine)

@@ -12,6 +12,8 @@ from datetime import date
 from shutil import copy2
 
 class Change_State(object):
+"""This class handles all calls to virsh specific to a machine.
+"""
     def get_xmlpath(self, machine):
         xmlname = machine.name + '.xml'
         return os.path.join(os.path.dirname(__file__), xmlname)
@@ -41,6 +43,10 @@ class Change_State(object):
             print("Failed to reset machine : %s" % e.output)
 
     def force_off(self, machine, graceful=True):
+        """This function performs a hard shutdown i.e. SIGTERM or SIGKILL to
+        the process. Note that SIGKILL will be employed if the graceful flag is
+        not put to True. For the moment this is not used.
+        """
         if graceful:
             try:
                 virsh_output = check_output(['virsh', 'destroy', '--graceful', machine.name])
@@ -85,6 +91,9 @@ class Change_State(object):
             copy2(self.get_xmlpath(machine), backup_name)
 
     def restore_fromxml(self, machine):
+        """This function does bootup the machine when called after having
+        (re)created the VM following the xml specs.
+        """
         try:
             virsh_output = check_output(['virsh', 'create', self.get_xmlpath(machine)])
         except CalledProcessError as e:

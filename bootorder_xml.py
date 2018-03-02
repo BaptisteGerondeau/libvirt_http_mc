@@ -4,6 +4,8 @@
 import xml.etree.ElementTree as etree
 
 class Bootorder(object):
+"""Class handling bootorder representation for manipulation.
+"""
     def __init__(self):
         self.bootorder = []
         self.original_bootorder = []
@@ -36,6 +38,13 @@ class Bootorder(object):
         return nb_bootdev_type
 
 class Bootorder_XML(object):
+"""Class handling bootorder parsing and rearrangment via XML parsing.
+Note that the sorting is made so that it preserves initial order of the boot
+devices per subtype : i.e. if NIC1 is above NIC2 in the original bootorder, it
+will also be in the PXEboot, and in the diskboot bootorder as well.
+It requires that you activate each device in the bootorder menu of
+virt-manager, as else the boot entry in the XML will not be there
+"""
     def __init__(self, xmlfile):
         self.xmlfile = xmlfile
         self.xmltree = etree.parse(xmlfile)
