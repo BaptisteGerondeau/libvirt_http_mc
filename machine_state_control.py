@@ -48,12 +48,10 @@ class Machine_State_Control(object):
 
     @cherrypy.expose
     def pxeboot(self, machine_name):
-        machine = self.helper.get_machine_byname(machine_name)
-        while machine.state != 'shut off':
+        while self.helper.get_machine_byname(machine_name).state != 'shut off':
             self.cyclepower(machine)
             time.sleep(5)
-            machine = self.helper.get_machine_byname(machine_name)
-        self.state_changer.pxeboot(machine)
+        self.state_changer.pxeboot(self.helper.get_machine_byname(machine_name))
 #        self.state_changer.power_on(machine)
 
     @cherrypy.expose
