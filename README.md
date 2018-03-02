@@ -15,7 +15,7 @@ Henceforth this tool was developed : it interfaces quite well with Mr-Provisione
 The tool obviously requires that libvirt and the virsh tool are installed on your system, as well as a few VMs to be connected to it.
 It is entirely written in Python (python 3.5.3), and the HTTP daemon engine used is CherryPy.
 
-<b>This tool has not been tested on Windows, only Debian 9 so it will probably work on any system supported by both CherryPy, Libvirt and Python.</b>
+<b>This tool has only been tested on Debian 9. It will probably work on any system supported by both CherryPy, Libvirt and Python.</b>
 
 Consequently, cherrypy version 14.0.0 is required.
 python 3.5.3 is also recommended, but the tool has been written with compatibilty in mind.
