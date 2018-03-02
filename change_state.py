@@ -12,8 +12,8 @@ from datetime import date
 from shutil import copy2
 
 class Change_State(object):
-"""This class handles all calls to virsh specific to a machine.
-"""
+    """This class handles all calls to virsh specific to a machine.
+    """
     def get_xmlpath(self, machine):
         xmlname = machine.name + '.xml'
         return os.path.join(os.path.dirname(__file__), xmlname)

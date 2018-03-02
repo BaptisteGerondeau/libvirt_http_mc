@@ -4,9 +4,9 @@
 import machine, listmachines
 
 class Machine_Control(object):
-"""Class used to fetch and check for the called machine's existence.
-The virsh logic is handled by ListMachines class
-"""
+    """Class used to fetch and check for the called machine's existence.
+    The virsh logic is handled by ListMachines class
+    """
     def get_machine_byname(self, machine_name):
         machine_list = listmachines.ListMachines()
         for machine in machine_list.get_machine_list():
