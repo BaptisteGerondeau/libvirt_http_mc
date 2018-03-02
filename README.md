@@ -14,7 +14,8 @@ Henceforth this tool was developed : it interfaces quite well with Mr-Provisione
 <p>
 The tool obviously requires that libvirt and the virsh tool are installed on your system, as well as a few VMs to be connected to it.
 It is entirely written in Python (python 3.5.3), and the HTTP daemon engine used is CherryPy.
-This tool has not been tested on Windows, only Debian 9 so it will probably work on any system supported by both CherryPy, Libvirt and Python.
+
+<b>This tool has not been tested on Windows, only Debian 9 so it will probably work on any system supported by both CherryPy, Libvirt and Python.</b>
 
 Consequently, cherrypy version 14.0.0 is required.
 python 3.5.3 is also recommended, but the tool has been written with compatibilty in mind.
@@ -26,6 +27,7 @@ Ensure that your firewall is correctly configured.
 <h1>Usage</h1>
 <p>
 To use this tool you can use either a http requests library, or your browser.
+
 This tool returns json formatted text on the information requests, and nothing (HTTP 200) on actions (this behaviour might be modified in the future).
 
 With this tool you can:
@@ -42,8 +44,10 @@ With this tool you can:
 <h1>Additional Notes and known issues</h1> 
 <p>
 This tool will pxe boot/disk boot prioritizing the first network interface/disk it finds in the original bootorder. Then it will put all other network interfaces/disks following it in the new bootorder.
+
 This tool backs up your VM's xml configuration before changing in, appending the date and 'backup' extension to it.
 defaultboot is also a command, but it doesn't do anything at the moment. It might become the restore backup command in  the future.
+
 Known issue :
 - PXEbooting/Diskbooting a running machine will fail. Please insure the machine is shut off before pxe/disk booting it.
 </p>
