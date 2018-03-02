@@ -39,8 +39,9 @@ With this tool you can:
 - Do a PXE boot of a specific machine :http://listeningip:listeningport/service/machinename/state_controller/pxeboot
 - Do a Disk boot of a specific machine : http://listeningip:listeningport/service/machinename/state_controller/diskboot
 </p>
-<h1>Additional Notes and known issued</h1> 
+<h1>Additional Notes and known issues</h1> 
 <p>
+This tool will pxe boot/disk boot prioritizing the first network interface/disk it finds in the original bootorder. Then it will put all other network interfaces/disks following it in the new bootorder.
 This tool backs up your VM's xml configuration before changing in, appending the date and 'backup' extension to it.
 defaultboot is also a command, but it doesn't do anything at the moment. It might become the restore backup command in  the future.
 Known issue :
