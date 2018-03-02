@@ -51,3 +51,13 @@ defaultboot is also a command, but it doesn't do anything at the moment. It migh
 Known issue :
 - PXEbooting/Diskbooting a running machine will fail. Please insure the machine is shut off before pxe/disk booting it.
 </p>
+<h1>Future</h1>
+<p>
+In the future Digest Authentication should make be available, also PXEbooting should be fixed and maybe a consistent json text return for each action call.
+</p>
+<h1>Final word</h1>
+<p>
+If you find any issues with the app please send me an email or open an issue.
+Pull requests are welcome !
+If you have a working pxebooting version of ipmi_sim I will also be glad to look into it !
+</p>
